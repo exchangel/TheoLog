@@ -17,7 +17,7 @@ jobs:
         with:
           working_directory: Vorlesungen
           root_file: "lecture-*.tex"
-          args: "-pdf -shell-escape -interaction=nonstopmode"
+          args: "-pdf -f -shell-escape -interaction=nonstopmode"
           extra_system_packages: "py3-pygments"
         continue-on-error: true
 
@@ -26,7 +26,7 @@ jobs:
         with:
           working_directory: Uebungen
           root_file: "uebung-*.tex"
-          args: "-pdf -shell-escape -interaction=nonstopmode"
+          args: "-pdf -f -shell-escape -interaction=nonstopmode"
           extra_system_packages: "py3-pygments"
         continue-on-error: true
 
