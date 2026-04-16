@@ -1,4 +1,4 @@
-name: LaTeX to PDF on Github 
+name: LaTeX to PDF on Github
 
 on:
   push:
@@ -8,6 +8,8 @@ on:
 jobs:
   build_pdfs:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -18,7 +20,7 @@ jobs:
           working_directory: Vorlesungen
           root_file: "lecture-*.tex"
           args: "-shell-escape -interaction=nonstopmode"
-          extra_system_packages: "pygments"
+          extra_system_packages: "py3-pygments"
         continue-on-error: true
 
       - name: Compile Uebungen (Exercises)
@@ -27,6 +29,7 @@ jobs:
           working_directory: Uebungen
           root_file: "uebung-*.tex"
           args: "-shell-escape -interaction=nonstopmode"
+          extra_system_packages: "py3-pygments"
         continue-on-error: true
 
       - name: Upload Compiled PDFs
